@@ -64,7 +64,7 @@ module.exports = {
     // This is the URL that app is served from. We use "/" in development.
     publicPath: publicPath,
     // Point sourcemap entries to original disk location (format as URL on Windows)
-    devtoolModuleFilenameTemplate: info =>
+    devtoolModuleFilenameTemplate: (info) =>
       path.resolve(info.absoluteResourcePath).replace(/\\/g, '/'),
   },
   resolve: {
@@ -164,6 +164,8 @@ module.exports = {
                 loader: require.resolve('css-loader'),
                 options: {
                   importLoaders: 1,
+                  modules: true,
+                  localIdentName: '[name]__[local]___[hash:base64:5]',
                 },
               },
               {
