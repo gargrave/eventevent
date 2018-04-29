@@ -1,0 +1,14 @@
+.baseText {
+  size: 1.2rem;
+  font-weight: bold;
+}
+
+.infoText {
+  composes: baseText;
+  color: lightblue;
+}
+
+.dangerText {
+  composes: baseText;
+  color: lightcoral;
+}
