@@ -1,9 +1,12 @@
+// @flow
 import React from 'react';
 import { Route, Switch } from 'react-router-dom';
 
+import type { ReactRoute } from './flowtypes';
+
 import commonRoutes from '../common/routes';
 
-const routes = [
+const routes: ReactRoute[] = [
   ...commonRoutes, // must be last for 404 routing
 ];
 

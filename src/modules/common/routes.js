@@ -1,6 +1,9 @@
+// @flow
 import HomePage from './HomePage/HomePage';
 
-const routes = [
+import type { ReactRoute } from '../core/flowtypes';
+
+const routes: ReactRoute[] = [
   {
     component: HomePage,
     exact: true,
