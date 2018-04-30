@@ -1,4 +1,4 @@
-import { ComponentBuilder } from '../../../utils/testHelpers';
+import { ComponentBuilder } from '../../../../utils/testHelpers';
 
 import COMPONENT_NAME from './COMPONENT_NAME';
 

@@ -1,4 +1,4 @@
-import { ComponentBuilder } from '../../../utils/testHelpers';
+import { ComponentBuilder } from '../../../../utils/testHelpers';
 
 import HomePage from './HomePage';
 
