@@ -4,7 +4,7 @@ import { Provider } from 'react-redux';
 
 import store from '../../store/store';
 
-import ConnectedApp from './connected/ConnectedApp/ConnectedApp';
+import ConnectedApp from './containers/ConnectedApp/ConnectedApp';
 
 class AppWrapper extends Component {
   render() {
