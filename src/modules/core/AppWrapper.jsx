@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import { BrowserRouter } from 'react-router-dom';
 import { Provider } from 'react-redux';
 
 import store from '../../store/store';
@@ -10,9 +9,7 @@ class AppWrapper extends Component {
   render() {
     return (
       <Provider store={store}>
-        <BrowserRouter>
-          <ConnectedApp />
-        </BrowserRouter>
+        <ConnectedApp />
       </Provider>
     );
   }

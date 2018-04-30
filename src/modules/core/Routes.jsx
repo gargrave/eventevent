@@ -4,9 +4,11 @@ import { Route, Switch } from 'react-router-dom';
 
 import type { ReactRoute } from './flowtypes';
 
+import authRoutes from '../auth/routes';
 import commonRoutes from '../common/routes';
 
 const routes: ReactRoute[] = [
+  ...authRoutes,
   ...commonRoutes, // must be last for 404 routing
 ];
 

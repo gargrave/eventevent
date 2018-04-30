@@ -4,7 +4,7 @@ import type { ReduxAction } from '../../common/flowtypes';
 import types from './types';
 
 export const setInitialized = () =>
-  async(dispatch: any) => dispatch({
+  (dispatch: any) => dispatch({
     type: types.INITIALIZED,
   });
 

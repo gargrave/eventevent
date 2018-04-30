@@ -1,7 +1,7 @@
 // @flow
-import HomePage from './components/HomePage/HomePage';
-
 import type { ReactRoute } from '../core/flowtypes';
+
+import HomePage from './components/HomePage/HomePage';
 
 const routes: ReactRoute[] = [
   {

@@ -1,5 +1,6 @@
 // @flow
 import React, { Component } from 'react';
+import { BrowserRouter } from 'react-router-dom';
 import { func, shape } from 'prop-types';
 
 import Routes from '../../Routes';
@@ -22,11 +23,13 @@ class AppComponent extends Component<Props> {
 
   render() {
     return (
-      <div className={styles.app}>
-        <main>
-          <Routes />
-        </main>
-      </div>
+      <BrowserRouter>
+        <div className={styles.app}>
+          <main>
+            <Routes />
+          </main>
+        </div>
+      </BrowserRouter>
     );
   }
 }
