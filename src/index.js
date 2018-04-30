@@ -2,9 +2,9 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 
 import './index.css';
-import App from './modules/core/App';
+import AppWrapper from './modules/core/AppWrapper';
 
 import registerServiceWorker from './registerServiceWorker';
 
-ReactDOM.render(<App />, document.getElementById('root'));
+ReactDOM.render(<AppWrapper />, document.getElementById('root'));
 registerServiceWorker();
