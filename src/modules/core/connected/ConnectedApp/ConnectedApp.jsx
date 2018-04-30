@@ -1,6 +1,7 @@
+import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 
-import { setInitialized } from '../../actions';
+import { actions } from '../../actions';
 
 import AppComponent from '../../components/AppComponent/AppComponent';
 
@@ -8,9 +9,7 @@ import AppComponent from '../../components/AppComponent/AppComponent';
 const mapStateToProps = (state) => ({});
 
 const mapDispatchToProps = (dispatch) => ({
-  setInitialized() {
-    return dispatch(setInitialized());
-  },
+  actions: bindActionCreators(actions, dispatch),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(AppComponent);

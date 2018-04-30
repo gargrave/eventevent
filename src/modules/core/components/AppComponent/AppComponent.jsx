@@ -1,21 +1,23 @@
 // @flow
 import React, { Component } from 'react';
-import { func } from 'prop-types';
+import { func, shape } from 'prop-types';
 
 import Routes from '../../Routes';
 import styles from './AppComponent.css';
 
 type Props = {
-  setInitialized: Function,
+  actions: Object,
 };
 
 class AppComponent extends Component<Props> {
   static propTypes = {
-    setInitialized: func.isRequired,
+    actions: shape({
+      setInitialized: func.isRequired,
+    }).isRequired,
   }
 
   componentDidMount() {
-    this.props.setInitialized();
+    this.props.actions.setInitialized();
   }
 
   render() {

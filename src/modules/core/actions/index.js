@@ -14,6 +14,6 @@ export default reducerContainer(
   }
 );
 
-export { 
+export const actions = { 
   setInitialized,
 };
