@@ -17,25 +17,36 @@ ShallowWrapper {
     "key": undefined,
     "nodeType": "host",
     "props": Object {
-      "children": Array [
-        <h2>
-          HomePage
+      "children": <h2>
+        HomePage
 </h2>,
-        <p
-          className={undefined}
->
-          This is info text!
-</p>,
-        <p
-          className={undefined}
->
-          This is danger text!
-</p>,
-      ],
     },
     "ref": null,
-    "rendered": Array [
-      Object {
+    "rendered": Object {
+      "instance": null,
+      "key": undefined,
+      "nodeType": "host",
+      "props": Object {
+        "children": "HomePage",
+      },
+      "ref": null,
+      "rendered": "HomePage",
+      "type": "h2",
+    },
+    "type": "div",
+  },
+  Symbol(enzyme.__nodes__): Array [
+    Object {
+      "instance": null,
+      "key": undefined,
+      "nodeType": "host",
+      "props": Object {
+        "children": <h2>
+          HomePage
+</h2>,
+      },
+      "ref": null,
+      "rendered": Object {
         "instance": null,
         "key": undefined,
         "nodeType": "host",
@@ -46,93 +57,6 @@ ShallowWrapper {
         "rendered": "HomePage",
         "type": "h2",
       },
-      Object {
-        "instance": null,
-        "key": undefined,
-        "nodeType": "host",
-        "props": Object {
-          "children": "This is info text!",
-          "className": undefined,
-        },
-        "ref": null,
-        "rendered": "This is info text!",
-        "type": "p",
-      },
-      Object {
-        "instance": null,
-        "key": undefined,
-        "nodeType": "host",
-        "props": Object {
-          "children": "This is danger text!",
-          "className": undefined,
-        },
-        "ref": null,
-        "rendered": "This is danger text!",
-        "type": "p",
-      },
-    ],
-    "type": "div",
-  },
-  Symbol(enzyme.__nodes__): Array [
-    Object {
-      "instance": null,
-      "key": undefined,
-      "nodeType": "host",
-      "props": Object {
-        "children": Array [
-          <h2>
-            HomePage
-</h2>,
-          <p
-            className={undefined}
->
-            This is info text!
-</p>,
-          <p
-            className={undefined}
->
-            This is danger text!
-</p>,
-        ],
-      },
-      "ref": null,
-      "rendered": Array [
-        Object {
-          "instance": null,
-          "key": undefined,
-          "nodeType": "host",
-          "props": Object {
-            "children": "HomePage",
-          },
-          "ref": null,
-          "rendered": "HomePage",
-          "type": "h2",
-        },
-        Object {
-          "instance": null,
-          "key": undefined,
-          "nodeType": "host",
-          "props": Object {
-            "children": "This is info text!",
-            "className": undefined,
-          },
-          "ref": null,
-          "rendered": "This is info text!",
-          "type": "p",
-        },
-        Object {
-          "instance": null,
-          "key": undefined,
-          "nodeType": "host",
-          "props": Object {
-            "children": "This is danger text!",
-            "className": undefined,
-          },
-          "ref": null,
-          "rendered": "This is danger text!",
-          "type": "p",
-        },
-      ],
       "type": "div",
     },
   ],
