@@ -6,9 +6,11 @@ import type { ReactRoute } from './flowtypes';
 
 import authRoutes from '../auth/routes';
 import commonRoutes from '../common/routes';
+import eventRoutes from '../events/routes';
 
 const routes: ReactRoute[] = [
   ...authRoutes,
+  ...eventRoutes,
   ...commonRoutes, // must be last for 404 routing
 ];
 

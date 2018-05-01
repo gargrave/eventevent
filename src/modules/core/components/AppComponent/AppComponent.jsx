@@ -2,10 +2,9 @@
 import React, { Component } from 'react';
 import { BrowserRouter } from 'react-router-dom';
 import { func, shape } from 'prop-types';
-import { Container } from 'semantic-ui-react';
 
 import Routes from '../../Routes';
-import styles from './AppComponent.css';
+import TempHeader from '../../../placeholders/TempHeader/TempHeader';
 
 type Props = {
   actions: Object,
@@ -25,13 +24,12 @@ class AppComponent extends Component<Props> {
   render() {
     return (
       <BrowserRouter>
-        <Container>
-          <div className={styles.app}>
-            <main>
-              <Routes />
-            </main>
-          </div>
-        </Container>
+        <div>
+          <TempHeader />
+          <main>
+            <Routes />
+          </main>
+        </div>
       </BrowserRouter>
     );
   }
