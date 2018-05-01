@@ -1,7 +1,6 @@
 // @flow
 import React from 'react';
 import { func } from 'prop-types';
-import { Button, Form } from 'semantic-ui-react';
 
 type Props = {
   onChange: Function,
@@ -13,20 +12,7 @@ const LoginForm = ({
   onChange,
   onSubmit,
 }: Props) => (
-  <Form onSubmit={onSubmit}>
-    <Form.Input 
-      name="email"
-      label="Email"
-      onChange={onChange}
-    />
-    <Form.Input 
-      name="password"
-      label="Password"
-      onChange={onChange}
-      type="password"
-    />
-    <Button type='submit'>Submit</Button>
-  </Form>
+  <h4>Login Form</h4>
 );
 
 LoginForm.propTypes = {
