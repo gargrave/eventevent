@@ -2,6 +2,7 @@
 import React, { Component } from 'react';
 import { BrowserRouter } from 'react-router-dom';
 import { func, shape } from 'prop-types';
+import { Container } from 'semantic-ui-react';
 
 import Routes from '../../Routes';
 import styles from './AppComponent.css';
@@ -24,11 +25,13 @@ class AppComponent extends Component<Props> {
   render() {
     return (
       <BrowserRouter>
-        <div className={styles.app}>
-          <main>
-            <Routes />
-          </main>
-        </div>
+        <Container>
+          <div className={styles.app}>
+            <main>
+              <Routes />
+            </main>
+          </div>
+        </Container>
       </BrowserRouter>
     );
   }

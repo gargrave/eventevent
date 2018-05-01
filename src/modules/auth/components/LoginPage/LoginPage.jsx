@@ -88,14 +88,12 @@ class LoginPage extends Component<Props, State> {
 
   render() {
     return (
-      <div>
+      <div style={{maxWidth: '600px'}}>
         <h2>LoginPage</h2>
-
         <LoginForm
           onChange={this.onInputChange}
           onSubmit={this.onSubmit}
         />
-
         <Link to='/'>Go to Home Page</Link>
       </div>
     );
