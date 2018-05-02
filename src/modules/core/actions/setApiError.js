@@ -1,5 +1,6 @@
 // @flow
-import type { FbError } from '../../../globals/firebase/flowtypes';
+// TODO: we should not import Firebase here.
+import type { FbError } from '../../../wrappers/firebase/flowtypes';
 import type { ReduxAction } from '../../common/flowtypes';
 
 import types from './types';

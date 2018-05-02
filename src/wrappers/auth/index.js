@@ -1,5 +1,5 @@
 // @flow
-import { firebaseAuth } from '../../globals/firebase';
+import { firebaseAuth } from '../firebase';
 
 export const submitLogin = async(email: string, password: string) =>
   firebaseAuth.signInAndRetrieveDataWithEmailAndPassword(email, password);

@@ -1,5 +1,5 @@
 // @flow
-import type { FbError } from '../../globals/firebase/flowtypes';
+import type { FbError } from '../firebase/flowtypes';
 
 export const parseAPIError = (err: FbError): string => {
   // TODO: make better use of Firebase's error structure
