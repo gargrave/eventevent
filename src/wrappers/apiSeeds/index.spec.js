@@ -5,28 +5,42 @@ import { mockEvents, mockUsers, objectsByOwner } from '../firebase/mocks';
 const user1 = { ...(mockUsers[0]) };
 const user2 = { ...(mockUsers[1]) };
 
+
 const loginAsUser = async(user) => {
   const res = await submitLogin(user.email, user.password);
   return res.user;
 };
 
-const deleteEventsForUser = async(user) => {
-  const query = db
-    .collection('events')
-    .where('owner', '==', user.uid);
-  const results = await query.get();
+
+const writeCollectionForUser = async(mockData, tableName, user) => {
+  const userItems = objectsByOwner(mockData, user);
+  const collection = db.collection(tableName);
   const batch = db.batch();
-  results.docs.forEach((doc) => batch.delete(doc.ref));
+  userItems.forEach(
+    (d) => batch.set(collection.doc(), d)
+  );
   return await batch.commit();
 };
 
-const writeEventsForUser = async(user) => {
-  const eventsForUser = objectsByOwner(mockEvents, user);
-  const collection = db.collection('events');
+const deleteCollectionForUser = async(tableName, user) => {
+  const query = db
+    .collection(tableName)
+    .where('owner', '==', user.uid);
+  const results = await query.get();
   const batch = db.batch();
-  eventsForUser.forEach((event) => batch.set(collection.doc(), event));
+  results.docs.forEach(
+    (doc) => batch.delete(doc.ref)
+  );
   return await batch.commit();
 };
+
+
+const writeEventsForUser = (user) => 
+  writeCollectionForUser(mockEvents, 'events', user);
+
+const deleteEventsForUser = (user) =>
+  deleteCollectionForUser('events', user);
+
 
 describe('Seeding data to the Firestore database', async() => {
   console.log(`
@@ -43,11 +57,8 @@ describe('Seeding data to the Firestore database', async() => {
       expect(user.uid).toBeDefined();
     });
   
-    it('should clear out existing test data', async() => {
+    it('should clear and re-write test data', async() => {
       await deleteEventsForUser(user);
-    });
-  
-    it('should write a couple of events to the database', async() => {
       await writeEventsForUser(user);
     });
   });
@@ -61,13 +72,9 @@ describe('Seeding data to the Firestore database', async() => {
       expect(user.uid).toBeDefined();
     });
   
-    it('should clear out existing test data', async() => {
+    it('should clear and re-write test data', async() => {
       await deleteEventsForUser(user);
-    });
-  
-    it('should write a couple of events to the database', async() => {
       await writeEventsForUser(user);
     });
   });
-  // TODO: delete all of the mock data after we are done
 });
