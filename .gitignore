@@ -21,4 +21,5 @@ yarn-debug.log*
 yarn-error.log*
 
 .vscode
-firebaseConfig.js
+**/firebaseConfig.js
+**/mocks/users.js

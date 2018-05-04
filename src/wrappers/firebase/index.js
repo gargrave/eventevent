@@ -1,18 +1,18 @@
 import firebase from 'firebase';
 import 'firebase/firestore';
 
-import firebaseConfig from './firebaseConfig.js';
+import { devConfig } from './firebaseConfig.js';
 
 let initialized = false;
 let firebaseAuth;
-let firestore;
+let db;
 
 if (!initialized) {
-  firebase.initializeApp(firebaseConfig);
+  firebase.initializeApp(devConfig);
   firebaseAuth = firebase.auth();
-  firestore = firebase.firestore();
+  db = firebase.firestore();
   const settings = { timestampsInSnapshots: true };
-  firestore.settings(settings);
+  db.settings(settings);
   initialized = true;
 }
 
@@ -20,6 +20,6 @@ export const fbTimestamp = () =>
   firebase.firestore.FieldValue.serverTimestamp();
 
 export {
-  firestore,
+  db,
   firebaseAuth,
 };
