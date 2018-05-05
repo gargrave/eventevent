@@ -1,7 +1,7 @@
 import faker from 'faker';
 import { mockUsers } from './users';
 
-const makeEvent = (owner) => ({
+export const makeEvent = (owner) => ({
   owner: owner.uid,
   title: `${faker.lorem.sentence()}`,
 });

@@ -1,7 +1,7 @@
 import { submitLogout } from '../auth';
 import { db } from '../firebase';
 import { parseCollection } from '../firebase/firestoreHelpers';
-import { mockEvents, mockUsers, objectsByOwner } from '../firebase/mocks';
+import { makeEvent, mockEvents, mockUsers, objectsByOwner } from '../firebase/mocks';
 import { loginAsUser } from './helpers';
 
 const user1 = { ...(mockUsers[0]) };
@@ -19,9 +19,19 @@ describe('Events API', () => {
 
     it('should fail to read without authentication', async() => {
       expect.assertions(2);
-      expect(user && user.uid).toEqual(undefined);
+      expect(user && user.uid).toBe(undefined);
       try {
         await db.collection('events').get();
+      } catch (err) {
+        expect(err.message).toMatch(SECURITY_ERROR);
+      }
+    });
+
+    it('should fail to write without authentication', async() => {
+      expect.assertions(1);
+      try {
+        const testEvent = makeEvent({ uid: 0 });
+        await db.collection('events').add(testEvent);
       } catch (err) {
         expect(err.message).toMatch(SECURITY_ERROR);
       }
@@ -34,7 +44,7 @@ describe('Events API', () => {
     it('should successfully login', async() => {
       expect.assertions(1);
       user = await loginAsUser(user1);
-      expect(user && user.uid).not.toEqual(undefined);
+      expect(user && user.uid).not.toBe(undefined);
     });
 
     describe('Read Actions', () => {
@@ -57,35 +67,137 @@ describe('Events API', () => {
           .where('owner', '==', user.uid);
         const res = await query.get();
         const events = parseCollection(res);
-        expect(events.length).toEqual(userMockEvents.length);
+        expect(events.length).toBe(userMockEvents.length);
       });
     });
 
     describe('Write actions', () => {
-      it('should not be able to write if not authenticated');
-      it('should be able to write with valid data');
+      it('should be able to write with valid data', async() => {
+        expect.assertions(2);
+        const testEvent = makeEvent(user);
+        const docRef = await db.collection('events').add(testEvent);
+        const doc = await docRef.get();
+        const eventId = doc.id;
+        expect(eventId).toBeDefined();
+        expect(doc.data()).toEqual(testEvent);
+        await docRef.delete();
+      });
 
       describe('"owner" field', () => {
-        it('should not be able to write with "owner" field missing');
-        it('should not be able to write with empty "owner" field');
-        it('should not be able to write with non-string "owner" field');
-        it('should not be able to write with invalid "owner" field');
+        it('should not be able to write with "owner" field missing', async() => {
+          expect.assertions(1);
+          const testEvent = makeEvent(user);
+          delete testEvent.owner;
+          try {
+            await db.collection('events').add(testEvent);
+          } catch (err) {
+            expect(err.message).toMatch(SECURITY_ERROR);
+          }
+        });
+
+        it('should not be able to write with empty "owner" field', async() => {
+          expect.assertions(1);
+          const testEvent = makeEvent(user);
+          testEvent.owner = '';
+          try {
+            await db.collection('events').add(testEvent);
+          } catch (err) {
+            expect(err.message).toMatch(SECURITY_ERROR);
+          }
+        });
+
+        it('should not be able to write with non-string "owner" field', async() => {
+          expect.assertions(1);
+          const testEvent = makeEvent(user);
+          testEvent.owner = 12345;
+          try {
+            await db.collection('events').add(testEvent);
+          } catch (err) {
+            expect(err.message).toMatch(SECURITY_ERROR);
+          }
+        });
+
+        it('should not be able to write with invalid "owner" field', async() => {
+          expect.assertions(1);
+          const testEvent = makeEvent(user);
+          testEvent.owner = 'notAValidUserId';
+          try {
+            await db.collection('events').add(testEvent);
+          } catch (err) {
+            expect(err.message).toMatch(SECURITY_ERROR);
+          }
+        });
       });
 
       describe('"title" field', () => {
-        it('should not be able to write with "title" field missing');
-        it('should not be able to write with empty "title" field');
-        it('should not be able to write with non-string "title" field');
+        it('should not be able to write with "title" field missing', async() => {
+          expect.assertions(1);
+          const testEvent = makeEvent(user);
+          delete testEvent.title;
+          try {
+            await db.collection('events').add(testEvent);
+          } catch (err) {
+            expect(err.message).toMatch(SECURITY_ERROR);
+          }
+        });
+
+        it('should not be able to write with empty "title" field', async() => {
+          expect.assertions(1);
+          const testEvent = makeEvent(user);
+          testEvent.title = '';
+          try {
+            await db.collection('events').add(testEvent);
+          } catch (err) {
+            expect(err.message).toMatch(SECURITY_ERROR);
+          }
+        });
+
+        it('should not be able to write with non-string "title" field', async() => {
+          expect.assertions(1);
+          const testEvent = makeEvent(user);
+          testEvent.title = 12345;
+          try {
+            await db.collection('events').add(testEvent);
+          } catch (err) {
+            expect(err.message).toMatch(SECURITY_ERROR);
+          }
+        });
       });
 
       describe('field count', () => {
-        it('should not be able to write if extra fields are provided');
+        it('should not be able to write if extra fields are provided', async() => {
+          expect.assertions(1);
+          const testEvent = makeEvent(user);
+          testEvent.whatever = 'whatever';
+          try {
+            await db.collection('events').add(testEvent);
+          } catch (err) {
+            expect(err.message).toMatch(SECURITY_ERROR);
+          }
+        });
       });
     });
 
     describe('Delete actions', () => {
-      it('should not be able to delete other user\'s records');
-      it('should be able to delete own records');
+      it('should not be able to delete other user\'s events', async() => {
+        // context: create an event as user 1, log in as user 2, and try to delete it
+        expect.assertions(1);
+        const testEvent = makeEvent(user);
+        const docRef = await db.collection('events').add(testEvent);
+
+        await submitLogout();
+        user = await loginAsUser(user2);
+
+        try {
+          await docRef.delete();
+        } catch (err) {
+          expect(err.message).toMatch(SECURITY_ERROR);
+          // now clean it up properly!
+          await submitLogout();
+          user = await loginAsUser(user1);
+          await docRef.delete();
+        }
+      });
     });
   });
 });

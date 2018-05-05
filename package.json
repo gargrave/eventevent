@@ -64,7 +64,7 @@
     "test": "clear && yarn jest --watch ./src/modules",
     "test:api": "clear && yarn jest --watch ./src/wrappers/apiTests",
     "flow": "flow",
-    "db:seed": "clear && yarn jest ./src/wrappers/apiSeeds"
+    "db:seed": "clear && yarn jest --forceExit ./src/wrappers/apiSeeds"
   },
   "jest": {
     "collectCoverageFrom": [
