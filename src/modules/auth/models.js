@@ -27,7 +27,7 @@ export const userModel = {
     const {
       creationTime,
       lastSignInTime,
-    } = user.metadata;
+    } = (user.metadata: any);
 
     return {
       displayName,
