@@ -3,22 +3,29 @@ import type { ReactRoute } from '../core/flowtypes';
 
 import { localUrls } from '../../globals/urls';
 
-import ConnectedCreateEventPage from './containers/ConnectedCreateEventPage/ConnectedCreateEventPage';
-import ConnectedMyEventsPage from './containers/ConnectedMyEventsPage/ConnectedMyEventsPage';
+import CreateEventContainer from './containers/CreateEventContainer/CreateEventContainer';
+import EventsIndexContainer from './containers/EventsIndexContainer/EventsIndexContainer';
+import MyHostedEventsContainer from './containers/MyHostedEventsContainer/MyHostedEventsContainer';
+import MyRegisteredEventsContainer from './containers/MyRegisteredEventsContainer/MyRegisteredEventsContainer';
 
 const routes: ReactRoute[] = [
   {
-    component: ConnectedMyEventsPage,
+    component: EventsIndexContainer,
+    exact: true,
+    path: localUrls.events.index,
+  },
+  {
+    component: MyHostedEventsContainer,
     exact: true,
     path: localUrls.events.myHosted,
   },
   {
-    component: ConnectedMyEventsPage,
+    component: MyRegisteredEventsContainer,
     exact: true,
     path: localUrls.events.myRegistered,
   },
   {
-    component: ConnectedCreateEventPage,
+    component: CreateEventContainer,
     exact: true,
     path: localUrls.events.create,
   },

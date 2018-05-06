@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 
 import { actions } from '../../actions';
 
-import MyEventsPage from '../../components/MyEventsPage/MyEventsPage';
+import EventsIndexPage from '../../components/EventsIndexPage/EventsIndexPage';
 
 /* eslint-disable no-unused-vars */
 const mapStateToProps = (state: any) => ({});
@@ -13,4 +13,4 @@ const mapDispatchToProps = (dispatch: any) => ({
   actions: bindActionCreators(actions, dispatch),
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(MyEventsPage);
+export default connect(mapStateToProps, mapDispatchToProps)(EventsIndexPage);

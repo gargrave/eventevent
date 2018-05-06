@@ -9,7 +9,7 @@ type Props = {
 
 const TempHeader = ({}: Props) => (
   <ul>
-    <li><Link to='/'>Home</Link></li>
+    <li><Link to={localUrls.events.index}>Browse Events</Link></li>
     <li><Link to={localUrls.events.myHosted}>My Hosted Events</Link></li>
     <li><Link to={localUrls.events.myRegistered}>My Registered Events</Link></li>
     <li><Link to={localUrls.events.create}>Schedule an Event</Link></li>

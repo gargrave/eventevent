@@ -4,17 +4,17 @@ import React, { Component } from 'react';
 type Props = {
 };
 
-class MyEventsPage extends Component<Props> {
+class EventsIndexPage extends Component<Props> {
   static propTypes = {
   };
 
   render() {
     return (
       <div>
-        <h2>My Events</h2>
+        <h2>Browse Public Events</h2>
       </div>
     );
   }
 }
 
-export default MyEventsPage;
+export default EventsIndexPage;
