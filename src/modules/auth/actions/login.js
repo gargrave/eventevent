@@ -4,6 +4,8 @@ import type { ReduxAction } from '../../common/flowtypes';
 import { submitLogin } from '../../../wrappers/auth';
 import { parseAPIError } from '../../../wrappers/errors';
 import { setApiError } from '../../core/actions/setApiError';
+
+import types from './types';
 import { requestEnd } from './requestEnd';
 import { requestStart } from './requestStart';
 import { setLocalUserData } from './setLocalUserData';
@@ -21,9 +23,8 @@ export const login = ({
     dispatch(requestStart());
     try {
       const result: any = await submitLogin(email, password);
-      const userData = setLocalUserData(result);
-      console.log({ userData });
-      return userData;
+      const user = setLocalUserData(result);
+      return user;
     } catch (err) {
       dispatch(setApiError(err));
       throw parseAPIError(err);

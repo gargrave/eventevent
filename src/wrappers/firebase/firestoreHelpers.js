@@ -10,7 +10,7 @@ export const parseCollection = (
   }
 
   return coll.docs.map((doc: FbDoc) => {
-    let data: any = doc.data();
+    let data: any = { id: doc.id, ...doc.data() };
     if (parseFn) {
       data = parseFn(data);
     }

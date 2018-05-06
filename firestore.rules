@@ -1,19 +1,22 @@
 service cloud.firestore {
   match /databases/{database}/documents {
     // basic validations
-    function validateString(str, minLen, maxLen) {
-      return str is string
+  	function validateString(str, minLen, maxLen) {
+    	return str is string
       && str.size() >= minLen
       && str.size() <= maxLen;
     }
     
     // basic fields for all CRUD resources
     function hasBasicFields() {
-      return request.resource.data.keys().hasAll([
-        'owner'
+      return request.auth.token.email_verified == true
+      && request.resource.data.keys().hasAll([
+        'owner', 'created', 'updated'
       ])
       && request.resource.data.owner is string
-      && request.resource.data.owner == request.auth.uid;
+      && request.resource.data.owner == request.auth.uid
+      && request.resource.data.created is timestamp
+      && request.resource.data.updated is timestamp;
     }
 
     // Event rules
@@ -23,18 +26,18 @@ service cloud.firestore {
       }
       
       allow read: 
-        if request.auth.uid == resource.data.owner;
+      	if request.auth.uid == resource.data.owner;
       
       allow create, update: 
         if hasBasicFields()
         && request.resource.data.keys().hasAll([
           'title'
         ])
-        && request.resource.data.size() == 2
+        && request.resource.data.size() == 4
         && validateEventFields();
         
       allow delete: 
-        if request.auth.uid == resource.data.owner;
+      	if request.auth.uid == resource.data.owner;
     }
   }
 }

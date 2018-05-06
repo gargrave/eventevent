@@ -180,7 +180,8 @@ describe('Events API', () => {
 
     describe('Delete actions', () => {
       it('should not be able to delete other user\'s events', async() => {
-        // context: create an event as user 1, log in as user 2, and try to delete it
+        // context: create an event as user 1
+        // logout, then log in as user 2, and try to delete it
         expect.assertions(1);
         const testEvent = makeEvent(user);
         const docRef = await db.collection('events').add(testEvent);

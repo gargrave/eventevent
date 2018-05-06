@@ -4,6 +4,7 @@ import types from './types';
 import { login, loginReducer } from './login';
 import { requestEndReducer } from './requestEnd';
 import { requestStartReducer } from './requestStart';
+import { setLocalUserData } from './setLocalUserData';
 
 const defaultState = () => ({
   authRequestPending: false,
@@ -22,4 +23,5 @@ export default reducerContainer(
 
 export const actions = { 
   login,
+  setLocalUserData,
 };
