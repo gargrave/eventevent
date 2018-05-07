@@ -1,0 +1,11 @@
+:root {
+  --errorColor: #ff4136;
+}
+
+.errorMsg {
+  color: var(--errorColor);
+}
+
+.invalid {
+  border-color: var(--errorColor) !important; /* using !important to override Shoelace's styles */
+}
