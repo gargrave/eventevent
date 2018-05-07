@@ -39,12 +39,13 @@ class App extends Component<Props, State> {
 
   async componentDidMount() {
     firebaseAuth.onAuthStateChanged(async(user) => {
-      if (user) {
+      const loggedIn = !!user;
+      if (loggedIn) {
         this.props.authActions.setLocalUserData(user);
-        this.setState({ loggedIn: true });
       }
-      this.props.actions.setInitialized();
+      this.setState({ loggedIn });
     });
+    this.props.actions.setInitialized();
   }
 
   render() {
