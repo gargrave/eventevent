@@ -1,5 +1,5 @@
 // @flow
-import type { FbCollection, FbDoc } from '../../firebase/flowtypes';
+import type { FbCollection } from '../../firebase/flowtypes';
 import type { Event } from '../../../modules/events/flowtypes';
 
 import { eventModel } from '../../../modules/events/models';
