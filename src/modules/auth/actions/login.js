@@ -5,7 +5,6 @@ import { submitLogin } from '../../../wrappers/auth';
 import { parseAPIError } from '../../../wrappers/errors';
 import { setApiError } from '../../core/actions/setApiError';
 
-import types from './types';
 import { requestEnd } from './requestEnd';
 import { requestStart } from './requestStart';
 import { setLocalUserData } from './setLocalUserData';
