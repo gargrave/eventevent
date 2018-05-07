@@ -9,7 +9,9 @@ import AuthenticatedRoute from '../../../common/hoc/AuthenticatedRoute/Authentic
 import AccountPage from '../../components/AccountPage/AccountPage';
 
 /* eslint-disable no-unused-vars */
-const mapStateToProps = (state: any) => ({});
+const mapStateToProps = (state: any) => ({
+  account: state.auth.user,
+});
 
 const mapDispatchToProps = (dispatch: any) => ({
   actions: bindActionCreators(actions, dispatch),

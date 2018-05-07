@@ -23,6 +23,15 @@ export type RegisterUser = {
   passwordConfirm: string,
 };
 
+export type LocalAccountData = {
+  id?: string,
+  displayName?: string,
+  email: string,
+  emailVerified?: boolean,
+  lastLogin?: Date | string,
+  registered?: Date | string,
+};
+
 // TODO: clean this up; differentiate local user from API data
 export type User = {
   id?: string,
@@ -38,9 +47,9 @@ export type User = {
 
 export type PasswordReset = {
   email: string,
-}
+};
 
 export type PasswordResetErrors = {
   hasErrors?: boolean,
   email: string,
-}
+};
