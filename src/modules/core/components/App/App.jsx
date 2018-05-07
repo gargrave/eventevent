@@ -15,7 +15,11 @@ type Props = {
   authActions: Object,
 };
 
-class App extends Component<Props> {
+type State = {
+  loggedIn: boolean,
+};
+
+class App extends Component<Props, State> {
   static propTypes = {
     actions: shape({
       setInitialized: func.isRequired,
@@ -26,10 +30,18 @@ class App extends Component<Props> {
     }).isRequired,
   }
 
+  constructor(props) {
+    super(props);
+    this.state = {
+      loggedIn: false,
+    };
+  }
+
   async componentDidMount() {
     firebaseAuth.onAuthStateChanged(async(user) => {
       if (user) {
         this.props.authActions.setLocalUserData(user);
+        this.setState({ loggedIn: true });
       }
       this.props.actions.setInitialized();
     });
@@ -39,7 +51,7 @@ class App extends Component<Props> {
     return (
       <BrowserRouter>
         <div>
-          <TempHeader />
+          <TempHeader loggedIn={this.state.loggedIn} />
           <main className={styles.appContainer}>
             <Routes />
           </main>
