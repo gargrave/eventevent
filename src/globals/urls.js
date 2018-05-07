@@ -1,5 +1,6 @@
 export const localUrls = {
   auth: {
+    account: '/account',
     login: '/account/login',
   },
   events: {

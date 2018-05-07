@@ -11,6 +11,7 @@ const loggedInRoutes = () => (
     <li><Link to={localUrls.events.myHosted}>My Hosted Events</Link></li>
     <li><Link to={localUrls.events.myRegistered}>My Registered Events</Link></li>
     <li><Link to={localUrls.events.create}>Schedule an Event</Link></li>
+    <li><Link to={localUrls.auth.account}>My Account</Link></li>
   </React.Fragment>
 );
 
