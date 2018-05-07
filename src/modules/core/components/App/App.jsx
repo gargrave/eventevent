@@ -8,14 +8,14 @@ import { firebaseAuth } from '../../../../wrappers/firebase';
 import Routes from '../../Routes';
 import TempHeader from '../../../placeholders/TempHeader/TempHeader';
 
-import styles from './AppComponent.css';
+import styles from './App.css';
 
 type Props = {
   actions: Object,
   authActions: Object,
 };
 
-class AppComponent extends Component<Props> {
+class App extends Component<Props> {
   static propTypes = {
     actions: shape({
       setInitialized: func.isRequired,
@@ -40,7 +40,7 @@ class AppComponent extends Component<Props> {
       <BrowserRouter>
         <div>
           <TempHeader />
-          <main className={styles.appWrapper}>
+          <main className={styles.appContainer}>
             <Routes />
           </main>
         </div>
@@ -49,4 +49,4 @@ class AppComponent extends Component<Props> {
   }
 }
 
-export default AppComponent;
+export default App;

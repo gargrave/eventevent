@@ -3,13 +3,13 @@ import { Provider } from 'react-redux';
 
 import store from '../../store/store';
 
-import ConnectedApp from './containers/ConnectedApp/ConnectedApp';
+import AppContainer from './containers/AppContainer/AppContainer';
 
 class AppWrapper extends Component {
   render() {
     return (
       <Provider store={store}>
-        <ConnectedApp />
+        <AppContainer />
       </Provider>
     );
   }

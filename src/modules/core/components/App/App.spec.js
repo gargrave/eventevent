@@ -1,19 +1,16 @@
 import { ComponentBuilder } from '../../../../utils/testHelpers';
 
-import AppComponent from './AppComponent';
+import App from './App';
 
-const defaultProps = {
+const defaultProps = () => ({
   actions: {
     setInitialized: jest.fn(),
   },
-};
+});
 
-const builder = new ComponentBuilder(
-  AppComponent,
-  defaultProps,
-);
+const builder = new ComponentBuilder(App, defaultProps());
 
-describe('AppComponent', () => {
+describe('App', () => {
   let component;
 
   test('matches the snapshot', () => {

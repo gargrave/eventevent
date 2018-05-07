@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import { actions } from '../../actions';
 import { actions as authActions } from '../../../auth/actions';
 
-import AppComponent from '../../components/AppComponent/AppComponent';
+import App from '../../components/App/App';
 
 /* eslint-disable no-unused-vars */
 const mapStateToProps = (state) => ({});
@@ -14,4 +14,4 @@ const mapDispatchToProps = (dispatch) => ({
   authActions: bindActionCreators(authActions, dispatch),
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(AppComponent);
+export default connect(mapStateToProps, mapDispatchToProps)(App);
