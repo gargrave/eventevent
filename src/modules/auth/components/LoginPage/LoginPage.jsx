@@ -1,10 +1,10 @@
 // @flow
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
-import { func, shape } from 'prop-types';
+import { func, object, shape } from 'prop-types';
 
 import type { LoginErrors, LoginUser } from '../../flowtypes';
 
+import { localUrls } from '../../../../globals/urls';
 import { loginUserModel } from '../../models';
 import { loginHasAllFields, validateLogin } from '../../validators';
 
@@ -12,6 +12,7 @@ import LoginForm from '../LoginForm/LoginForm';
 
 type Props = {
   actions: Object,
+  history: Object,
 };
 
 type State = {
@@ -27,6 +28,7 @@ class LoginPage extends Component<Props, State> {
     actions: shape({
       login: func.isRequired,
     }),
+    history: object,
   };
 
   constructor(props: Props) {
@@ -61,7 +63,6 @@ class LoginPage extends Component<Props, State> {
     const errors = validateLogin(model);
 
     if (errors.found) {
-      // TODO: need to update this to show errors on form
       this.setState({ errors });
       return;
     }
@@ -73,10 +74,8 @@ class LoginPage extends Component<Props, State> {
     }, async() => {
       try {
         const loginUser = loginUserModel.toAPI(model);
-        const res = await this.props.actions.login(loginUser);
-        console.log('%csuccessfully logged in!', 'color: pink;font-size: 12px;background:#454;padding:2px 4px;');
-        console.log({ res });
-        // this.props.history.push(localUrls.account);
+        await this.props.actions.login(loginUser);
+        this.props.history.push(localUrls.events.myHosted);
       } catch (err) {
         this.setState({
           formDisabled: false,
@@ -91,10 +90,13 @@ class LoginPage extends Component<Props, State> {
       <div style={{maxWidth: '600px'}}>
         <h2>LoginPage</h2>
         <LoginForm
-          onChange={this.onInputChange}
+          disabled={this.state.formDisabled}
+          errors={this.state.errors}
+          loginUser={this.state.model}
+          onInputChange={this.onInputChange}
           onSubmit={this.onSubmit}
+          topLevelError={this.state.topLevelError}
         />
-        <Link to='/'>Go to Home Page</Link>
       </div>
     );
   }

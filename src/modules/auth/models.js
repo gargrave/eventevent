@@ -6,16 +6,14 @@ import type {
 } from './flowtypes';
 
 export const userModel = {
-  empty(): User {
-    return {
-      displayName: '',
-      email: '',
-      emailVerified: false,
-      id: '',
-      lastLogin: '',
-      registered: '',
-    };
-  },
+  empty: (): User => ({
+    displayName: '',
+    email: '',
+    emailVerified: false,
+    id: '',
+    lastLogin: '',
+    registered: '',
+  }),
 
   fromAPI(user: User): User {
     const {
@@ -41,25 +39,18 @@ export const userModel = {
 };
 
 export const loginUserModel = {
-  empty(): LoginUser {
-    return {
-      email: '',
-      password: '',
-    };
-  },
+  empty: (): LoginUser => ({
+    email: '',
+    password: '',
+  }),
 
-  emptyErrors(): LoginErrors {
-    return {
-      email: '',
-      password: '',
-    };
-  },
+  emptyErrors: (): LoginErrors => ({
+    email: '',
+    password: '',
+  }),
 
-  toAPI(data: LoginUser): LoginUser {
-    let payload: LoginUser = {
-      email: data.email,
-      password: data.password,
-    };
-    return payload;
-  },
+  toAPI: (user: LoginUser): LoginUser => ({
+    email: user.email,
+    password: user.password,
+  }),
 };

@@ -1,6 +1,6 @@
 // @flow
 import React from 'react';
-import { any, array, func, bool, string} from 'prop-types';
+import { any, func, bool, string} from 'prop-types';
 
 import Alert from '../Alert/Alert';
 import Button from '../Button/Button';

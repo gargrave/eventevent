@@ -29,14 +29,10 @@ class AppComponent extends Component<Props> {
 
   async componentDidMount() {
     firebaseAuth.onAuthStateChanged(async(user) => {
-      // TODO: we can get rid of this once we have a proper login process
       if (user) {
         this.props.authActions.setLocalUserData(user);
-        this.props.actions.setInitialized();
-      } else {
-        console.log('logging in...');
-        this.props.authActions.login(tempUser);
       }
+      this.props.actions.setInitialized();
     });
   }
 

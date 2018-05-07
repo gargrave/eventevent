@@ -23,9 +23,8 @@ ShallowWrapper {
     "key": undefined,
     "nodeType": "class",
     "props": Object {
-      "children": <div
-        className={undefined}
->
+      "children": <div>
+        <TempHeader />
         <main>
                 <Routes />
         </main>
@@ -37,21 +36,16 @@ ShallowWrapper {
       "key": undefined,
       "nodeType": "host",
       "props": Object {
-        "children": <main>
-          <Routes />
+        "children": Array [
+          <TempHeader />,
+          <main>
+            <Routes />
 </main>,
-        "className": undefined,
+        ],
       },
       "ref": null,
-      "rendered": Object {
-        "instance": null,
-        "key": undefined,
-        "nodeType": "host",
-        "props": Object {
-          "children": <Routes />,
-        },
-        "ref": null,
-        "rendered": Object {
+      "rendered": Array [
+        Object {
           "instance": null,
           "key": undefined,
           "nodeType": "function",
@@ -60,39 +54,7 @@ ShallowWrapper {
           "rendered": null,
           "type": [Function],
         },
-        "type": "main",
-      },
-      "type": "div",
-    },
-    "type": [Function],
-  },
-  Symbol(enzyme.__nodes__): Array [
-    Object {
-      "instance": null,
-      "key": undefined,
-      "nodeType": "class",
-      "props": Object {
-        "children": <div
-          className={undefined}
->
-          <main>
-                    <Routes />
-          </main>
-</div>,
-      },
-      "ref": null,
-      "rendered": Object {
-        "instance": null,
-        "key": undefined,
-        "nodeType": "host",
-        "props": Object {
-          "children": <main>
-            <Routes />
-</main>,
-          "className": undefined,
-        },
-        "ref": null,
-        "rendered": Object {
+        Object {
           "instance": null,
           "key": undefined,
           "nodeType": "host",
@@ -111,6 +73,68 @@ ShallowWrapper {
           },
           "type": "main",
         },
+      ],
+      "type": "div",
+    },
+    "type": [Function],
+  },
+  Symbol(enzyme.__nodes__): Array [
+    Object {
+      "instance": null,
+      "key": undefined,
+      "nodeType": "class",
+      "props": Object {
+        "children": <div>
+          <TempHeader />
+          <main>
+                    <Routes />
+          </main>
+</div>,
+      },
+      "ref": null,
+      "rendered": Object {
+        "instance": null,
+        "key": undefined,
+        "nodeType": "host",
+        "props": Object {
+          "children": Array [
+            <TempHeader />,
+            <main>
+              <Routes />
+</main>,
+          ],
+        },
+        "ref": null,
+        "rendered": Array [
+          Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "function",
+            "props": Object {},
+            "ref": null,
+            "rendered": null,
+            "type": [Function],
+          },
+          Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "host",
+            "props": Object {
+              "children": <Routes />,
+            },
+            "ref": null,
+            "rendered": Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "function",
+              "props": Object {},
+              "ref": null,
+              "rendered": null,
+              "type": [Function],
+            },
+            "type": "main",
+          },
+        ],
         "type": "div",
       },
       "type": [Function],

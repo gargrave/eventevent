@@ -21,7 +21,15 @@ class MyHostedEventsPage extends Component<Props> {
     loggedIn: bool.isRequired,
   };
 
+  componentDidMount() {
+    this.fetchEventsIfNeeded();
+  }
+
   componentDidUpdate() {
+    this.fetchEventsIfNeeded();
+  }
+
+  fetchEventsIfNeeded() {
     const { initialized, loggedIn } = this.props;
     if (initialized && loggedIn) {
       this.props.actions.fetchHostedEvents();

@@ -8,10 +8,7 @@ const defaultProps = () => ({
   type: 'success',
 });
 
-const builder = new ComponentBuilder(
-  Button,
-  defaultProps(),
-);
+const builder = new ComponentBuilder(Button, defaultProps());
 
 describe('Button', () => {
   let component;
