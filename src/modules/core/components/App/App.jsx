@@ -30,7 +30,7 @@ class App extends Component<Props, State> {
     }).isRequired,
   }
 
-  constructor(props) {
+  constructor(props: Props) {
     super(props);
     this.state = {
       loggedIn: false,

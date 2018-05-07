@@ -1,4 +1,3 @@
 .loginPage {
-  max-width: 600px;
-  margin: auto;
+  composes: formContainer from '../../../core/styles/containers.css';
 }
