@@ -1,0 +1,3 @@
+.myRegisteredEventsPage {
+  composes: pageContainer from '../../../core/styles/containers.css';
+}

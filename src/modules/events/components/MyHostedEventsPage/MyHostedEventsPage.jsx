@@ -4,6 +4,8 @@ import { array, bool, func, shape } from 'prop-types';
 
 import type { Event } from '../../flowtypes';
 
+import styles from './MyHostedEventsPage.css';
+
 type Props = {
   actions: Object,
   events: Event[],
@@ -38,9 +40,8 @@ class MyHostedEventsPage extends Component<Props> {
 
   render() {
     return (
-      <div>
+      <section className={styles.myHostedEventsPage}>
         <h2>Events I am Hosting</h2>
-
         <ul>
           {
             this.props.events.map((event) => {
@@ -50,7 +51,7 @@ class MyHostedEventsPage extends Component<Props> {
             })
           }
         </ul>
-      </div>
+      </section>
     );
   }
 }

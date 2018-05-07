@@ -1,6 +1,8 @@
 // @flow
 import React, { Component } from 'react';
 
+import styles from './EventsIndexPage.css';
+
 type Props = {
 };
 
@@ -10,9 +12,9 @@ class EventsIndexPage extends Component<Props> {
 
   render() {
     return (
-      <div>
+      <section className={styles.eventsIndexPage}>
         <h2>Browse Public Events</h2>
-      </div>
+      </section>
     );
   }
 }

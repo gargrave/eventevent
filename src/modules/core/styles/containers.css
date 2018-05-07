@@ -1,4 +1,13 @@
-.formContainer {
-  max-width: 600px;
+.container {
   margin: auto;
+}
+
+.pageContainer {
+  composes: container;
+  max-width: 800px;
+}
+
+.formContainer {
+  composes: container;
+  max-width: 600px;
 }

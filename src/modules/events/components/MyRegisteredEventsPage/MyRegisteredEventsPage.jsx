@@ -1,6 +1,8 @@
 // @flow
 import React, { Component } from 'react';
 
+import styles from './MyRegisteredEventsPage.css';
+
 type Props = {
 };
 
@@ -10,9 +12,9 @@ class MyRegisteredEventsPage extends Component<Props> {
 
   render() {
     return (
-      <div>
+      <section className={styles.myRegisteredEventsPage}>
         <h2>Events I am Attending</h2>
-      </div>
+      </section>
     );
   }
 }
