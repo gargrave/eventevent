@@ -4,12 +4,11 @@ import { BrowserRouter } from 'react-router-dom';
 import { func, shape } from 'prop-types';
 
 import { firebaseAuth } from '../../../../wrappers/firebase';
-import { mockUsers } from '../../../../wrappers/firebase/mocks';
 
 import Routes from '../../Routes';
 import TempHeader from '../../../placeholders/TempHeader/TempHeader';
 
-const tempUser = mockUsers[0];
+import styles from './AppComponent.css';
 
 type Props = {
   actions: Object,
@@ -41,7 +40,7 @@ class AppComponent extends Component<Props> {
       <BrowserRouter>
         <div>
           <TempHeader />
-          <main>
+          <main className={styles.appWrapper}>
             <Routes />
           </main>
         </div>

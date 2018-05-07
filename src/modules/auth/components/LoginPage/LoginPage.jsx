@@ -10,6 +10,8 @@ import { loginHasAllFields, validateLogin } from '../../validators';
 
 import LoginForm from '../LoginForm/LoginForm';
 
+import styles from './LoginPage.css';
+
 type Props = {
   actions: Object,
   history: Object,
@@ -87,8 +89,8 @@ class LoginPage extends Component<Props, State> {
 
   render() {
     return (
-      <div style={{maxWidth: '600px'}}>
-        <h2>LoginPage</h2>
+      <section className={styles.loginPage}>
+        <h2>Login</h2>
         <LoginForm
           disabled={this.state.formDisabled}
           errors={this.state.errors}
@@ -97,7 +99,7 @@ class LoginPage extends Component<Props, State> {
           onSubmit={this.onSubmit}
           topLevelError={this.state.topLevelError}
         />
-      </div>
+      </section>
     );
   }
 }
