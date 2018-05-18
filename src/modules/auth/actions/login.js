@@ -16,9 +16,9 @@ type Args = {
   password: string,
 }
 
-const _login = (user: LocalUserData) => ({
+const _login = (user: LocalUserData, token: string) => ({
   type: types.LOGIN,
-  payload: { user },
+  payload: { user, token },
 });
 
 export const login = ({
@@ -43,12 +43,15 @@ export const login = ({
 export const setLocalUserData = (user: ApiUserData) =>
   async(dispatch: any) => {
     const userData = userModel.fromAPI(user);
-    dispatch(_login(userData));
+    const token = user.token;
+    localStorage.setItem('token', token);
+    dispatch(_login(userData, token));
     return userData;
   };
 
 export const loginReducer = 
   (state: any, action: ReduxAction) => ({
     ...state,
+    token: action.payload.token,
     userData: action.payload.user,
   });

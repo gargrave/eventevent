@@ -12,7 +12,6 @@ export const userModel = {
       created_at,
       email,
       id,
-      token,
       updated_at,
     } = user;
 
@@ -20,7 +19,6 @@ export const userModel = {
       createdAt: created_at,
       email,
       id,
-      token,
       updatedAt: updated_at,
     };
   },

@@ -8,6 +8,7 @@ import { requestStartReducer } from './requestStart';
 
 const defaultState = () => ({
   authRequestPending: false,
+  token: null,
   userData: null,
 });
 
