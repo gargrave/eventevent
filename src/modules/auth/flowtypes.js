@@ -10,46 +10,19 @@ export type LoginUser = {
   password: string,
 };
 
-export type RegisterErrors = {
-  found?: boolean,
+
+export type ApiUserData = {
+  id: string,
   email: string,
-  password: string,
-  passwordConfirm: string,
+  created_at: Date | string,
+  token?: string,
+  updated_at: Date | string,
 };
 
-export type RegisterUser = {
+export type LocalUserData = {
+  id: string,
   email: string,
-  password: string,
-  passwordConfirm: string,
-};
-
-export type LocalAccountData = {
-  id?: string,
-  displayName?: string,
-  email: string,
-  emailVerified?: boolean,
-  lastLogin?: Date | string,
-  registered?: Date | string,
-};
-
-// TODO: clean this up; differentiate local user from API data
-export type User = {
-  id?: string,
-  uid?: string,
-  displayName?: string,
-  email: string,
-  emailVerified?: boolean,
-  lastLogin?: Date | string,
-  metadata?: any,
-  password?: string,
-  registered?: Date | string,
-};
-
-export type PasswordReset = {
-  email: string,
-};
-
-export type PasswordResetErrors = {
-  hasErrors?: boolean,
-  email: string,
+  createdAt: Date | string,
+  token?: string,
+  updatedAt: Date | string,
 };

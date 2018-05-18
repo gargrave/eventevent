@@ -1,6 +1,6 @@
 // @flow
 import { submitLogout } from '../../../wrappers/auth';
-import { parseAPIError } from '../../../wrappers/errors';
+import { parseAPIError } from '../../../wrappers/api/v1/errors';
 import { setApiError } from '../../core/actions/setApiError';
 
 import types from './types';

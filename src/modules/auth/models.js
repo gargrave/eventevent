@@ -1,39 +1,27 @@
 // @flow
 import type {
+  ApiUserData,
+  LocalUserData,
   LoginErrors,
   LoginUser,
-  User,
 } from './flowtypes';
 
 export const userModel = {
-  empty: (): User => ({
-    displayName: '',
-    email: '',
-    emailVerified: false,
-    id: '',
-    lastLogin: '',
-    registered: '',
-  }),
-
-  fromAPI(user: User): User {
+  fromAPI(user: ApiUserData): LocalUserData {
     const {
-      displayName,
+      created_at,
       email,
-      emailVerified,
-      uid,
+      id,
+      token,
+      updated_at,
     } = user;
-    const {
-      creationTime,
-      lastSignInTime,
-    } = (user.metadata: any);
 
     return {
-      displayName,
+      createdAt: created_at,
       email,
-      emailVerified,
-      id: uid,
-      lastLogin: lastSignInTime,
-      registered: creationTime,
+      id,
+      token,
+      updatedAt: updated_at,
     };
   },
 };

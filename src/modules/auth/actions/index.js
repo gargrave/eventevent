@@ -1,16 +1,14 @@
 import { reducerContainer } from '../../../store/helpers';
 
 import types from './types';
-import { login, loginReducer } from './login';
+import { login, loginReducer, setLocalUserData } from './login';
 import { logout, logoutReducer } from './logout';
 import { requestEndReducer } from './requestEnd';
 import { requestStartReducer } from './requestStart';
-import { setLocalUserData } from './setLocalUserData';
 
 const defaultState = () => ({
   authRequestPending: false,
-  user: null,
-  verificationEmailSent: false,
+  userData: null,
 });
 
 export default reducerContainer(

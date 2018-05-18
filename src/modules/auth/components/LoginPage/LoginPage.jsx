@@ -75,8 +75,8 @@ class LoginPage extends Component<Props, State> {
       topLevelError: '',
     }, async() => {
       try {
-        const loginUser = loginUserModel.toAPI(model);
-        await this.props.actions.login(loginUser);
+        const loginData = loginUserModel.toAPI(model);
+        await this.props.actions.login(loginData);
         this.props.history.push(localUrls.events.myHosted);
       } catch (err) {
         this.setState({

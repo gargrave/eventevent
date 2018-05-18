@@ -38,13 +38,13 @@ class App extends Component<Props, State> {
   }
 
   async componentDidMount() {
-    firebaseAuth.onAuthStateChanged(async(user) => {
-      const loggedIn = !!user;
-      if (loggedIn) {
-        this.props.authActions.setLocalUserData(user);
-      }
-      this.setState({ loggedIn });
-    });
+    // firebaseAuth.onAuthStateChanged(async(user) => {
+    //   const loggedIn = !!user;
+    //   if (loggedIn) {
+    //     this.props.authActions.setLocalUserData(user);
+    //   }
+    //   this.setState({ loggedIn });
+    // });
     this.props.actions.setInitialized();
   }
 

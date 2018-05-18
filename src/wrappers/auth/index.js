@@ -18,3 +18,4 @@ export const sendAccountVerificationEmail = () =>
 
 export const sendPasswordResetEmail = (email: string) =>
   firebaseAuth.sendPasswordResetEmail(email);
+ 
