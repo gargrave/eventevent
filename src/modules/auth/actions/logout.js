@@ -1,5 +1,4 @@
 // @flow
-import { submitLogout } from '../../../wrappers/auth';
 import { parseAPIError } from '../../../wrappers/api/v1/errors';
 import { setApiError } from '../../core/actions/setApiError';
 
@@ -13,7 +12,9 @@ export const logout = () =>
   async(dispatch: any) => {
     dispatch(requestStart());
     try {
-      await submitLogout();
+      // await submitLogout();
+      // TODO move this to the new API
+      return true;
     } catch (err) {
       dispatch(setApiError(err));
       throw parseAPIError(err);

@@ -2,7 +2,6 @@
 import type { ReduxAction } from '../../common/flowtypes';
 import type { Event } from '../../events/flowtypes';
 
-import { fetchHostedEventsFromAPI } from '../../../wrappers/api/events';
 import { setApiError } from '../../core/actions/setApiError';
 
 import types from './types';
@@ -23,9 +22,11 @@ export const fetchHostedEvents = () =>
     
     dispatch(requestStart());
     try {
-      const records = await fetchHostedEventsFromAPI();
-      dispatch(_fetchHostedEvents(records));
-      return records;
+      // const records = await fetchHostedEventsFromAPI();
+      // dispatch(_fetchHostedEvents(records));
+      // return records;
+      // TODO move this to the new API
+      return [];
     } catch (err) {
       dispatch(setApiError(err));
     } finally {

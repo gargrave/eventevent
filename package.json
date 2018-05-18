@@ -63,8 +63,6 @@
     "build": "node scripts/build.js",
     "flow": "flow",
     "test": "clear && yarn jest --watch ./src/modules",
-    "test:api": "clear && yarn jest --watch ./src/wrappers/apiTests",
-    "db:seed": "clear && yarn jest --forceExit ./src/wrappers/apiSeeds",
     "deploy:dev": "yarn build && firebase deploy --only hosting"
   },
   "jest": {

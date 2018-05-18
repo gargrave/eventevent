@@ -3,8 +3,6 @@ import React, { Component } from 'react';
 import { BrowserRouter } from 'react-router-dom';
 import { func, shape } from 'prop-types';
 
-import { firebaseAuth } from '../../../../wrappers/firebase';
-
 import Routes from '../../Routes';
 import TempHeader from '../../../placeholders/TempHeader/TempHeader';
 
@@ -38,13 +36,6 @@ class App extends Component<Props, State> {
   }
 
   async componentDidMount() {
-    // firebaseAuth.onAuthStateChanged(async(user) => {
-    //   const loggedIn = !!user;
-    //   if (loggedIn) {
-    //     this.props.authActions.setLocalUserData(user);
-    //   }
-    //   this.setState({ loggedIn });
-    // });
     this.props.actions.setInitialized();
   }
 
