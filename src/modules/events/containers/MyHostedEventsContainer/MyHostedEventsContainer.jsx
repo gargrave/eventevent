@@ -10,7 +10,7 @@ import MyHostedEventsPage from '../../components/MyHostedEventsPage/MyHostedEven
 const mapStateToProps = (state: any) => ({
   events: state.events.data || [],
   initialized: state.app.initialized,
-  loggedIn: !!(state.auth.userData),
+  loggedIn: !!(state.auth.token && state.auth.userData),
 });
 
 const mapDispatchToProps = (dispatch: any) => ({

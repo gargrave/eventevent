@@ -3,6 +3,7 @@ import { reducerContainer } from '../../../store/helpers';
 import types from './types';
 import { login, loginReducer, setLocalUserData } from './login';
 import { logout, logoutReducer } from './logout';
+import { reloadUser } from './reloadUser';
 import { requestEndReducer } from './requestEnd';
 import { requestStartReducer } from './requestStart';
 
@@ -25,5 +26,6 @@ export default reducerContainer(
 export const actions = { 
   login,
   logout,
+  reloadUser,
   setLocalUserData,
 };

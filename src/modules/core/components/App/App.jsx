@@ -23,7 +23,7 @@ class App extends Component<Props, State> {
       setInitialized: func.isRequired,
     }).isRequired,
     authActions: shape({
-      login: func.isRequired,
+      reloadUser: func.isRequired,
       setLocalUserData: func.isRequired,
     }).isRequired,
   }
@@ -36,6 +36,10 @@ class App extends Component<Props, State> {
   }
 
   async componentDidMount() {
+    const token = localStorage.getItem('token');
+    if (token) {
+      await this.props.authActions.reloadUser(token);
+    }
     this.props.actions.setInitialized();
   }
 
