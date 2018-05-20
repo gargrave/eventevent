@@ -1,27 +1,11 @@
 // @flow
-import axios from 'axios';
+import API from '../apiWrapper';
 
-const DEFAULT_HEADERS = { Accept: 'application/json' };
+const URL = '/auth/user';
 
 async function fetchUser(token: string) {
-  const url = 'http://localhost:3001/api/v1/auth/user';
-  const method = 'get';
-  const req = {
-    method,
-    headers: { 
-      ...DEFAULT_HEADERS,
-      authorization: token,
-    },
-    url,
-  };
-
-  try {
-    const res = await axios.request(req);
-    return res.data.data;
-  } catch(err) {
-    const errData = err.response.data.data;
-    return errData;
-  }
+  const res = await API.get(URL, token);
+  return res.data;
 }
 
 export default fetchUser;

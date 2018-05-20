@@ -1,24 +1,10 @@
-import axios from 'axios';
+import API from '../apiWrapper';
 
-const DEFAULT_HEADERS = { Accept: 'application/json' };
+const URL = '/auth/login';
 
 async function loginToAPI(email, password) {
-  const url = 'http://localhost:3001/api/v1/auth/login';
-  const method = 'post';
-  const req = {
-    method,
-    headers: { ...DEFAULT_HEADERS },
-    url,
-    data: { email, password },
-  };
-
-  try {
-    const res = await axios.request(req);
-    return res.data.data;
-  } catch(err) {
-    const errData = err.response.data.data;
-    return errData;
-  }
+  const res = await API.post(URL, { email, password });
+  return res.data;
 }
 
 export default loginToAPI;
