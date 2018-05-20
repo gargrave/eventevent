@@ -7,7 +7,10 @@ import { actions as authActions } from '../../../auth/actions';
 import App from '../../components/App/App';
 
 /* eslint-disable no-unused-vars */
-const mapStateToProps = (state) => ({});
+const mapStateToProps = (state) => ({
+  token: state.auth.token,
+  userData: state.auth.userData,
+});
 
 const mapDispatchToProps = (dispatch) => ({
   actions: bindActionCreators(actions, dispatch),

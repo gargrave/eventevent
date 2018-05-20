@@ -1,7 +1,9 @@
 import { reducerContainer } from '../../../store/helpers';
 
 import types from './types';
+import authTypes from '../../auth/actions/types';
 import { fetchHostedEvents, fetchHostedEventsReducer } from './fetchHostedEvents';
+import { clearEventsReducer } from './clearEvents';
 import { requestEndReducer } from './requestEnd';
 import { requestStartReducer } from './requestStart';
 
@@ -16,6 +18,7 @@ export default reducerContainer(
     [types.FETCH_HOSTED_EVENTS_SUCCESS]: fetchHostedEventsReducer,
     [types.REQUEST_END]: requestEndReducer,
     [types.REQUEST_START]: requestStartReducer,
+    [authTypes.LOGOUT]: clearEventsReducer,
   }
 );
 

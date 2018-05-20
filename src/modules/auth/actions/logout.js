@@ -14,11 +14,11 @@ export const logout = () =>
     try {
       // await submitLogout();
       // TODO move this to the new API
-      return true;
     } catch (err) {
       dispatch(setApiError(err));
       throw parseAPIError(err);
     } finally {
+      localStorage.removeItem('token');
       dispatch(_logout());
       dispatch(requestEnd());
     }
@@ -26,5 +26,6 @@ export const logout = () =>
 
 export const logoutReducer = (state: any) => ({
   ...state,
-  user: null,
+  token: null,
+  userData: null,
 });

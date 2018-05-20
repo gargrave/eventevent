@@ -10,7 +10,7 @@ import AccountPage from '../../components/AccountPage/AccountPage';
 
 /* eslint-disable no-unused-vars */
 const mapStateToProps = (state: any) => ({
-  account: state.auth.user,
+  user: state.auth.userData,
 });
 
 const mapDispatchToProps = (dispatch: any) => ({

@@ -1,7 +1,7 @@
 // @flow
 import React, { Component } from 'react';
 import { BrowserRouter } from 'react-router-dom';
-import { func, shape } from 'prop-types';
+import { func, object, shape, string } from 'prop-types';
 
 import Routes from '../../Routes';
 import TempHeader from '../../../placeholders/TempHeader/TempHeader';
@@ -11,13 +11,11 @@ import styles from './App.css';
 type Props = {
   actions: Object,
   authActions: Object,
+  token: string,
+  userData: Object,
 };
 
-type State = {
-  loggedIn: boolean,
-};
-
-class App extends Component<Props, State> {
+class App extends Component<Props> {
   static propTypes = {
     actions: shape({
       setInitialized: func.isRequired,
@@ -26,13 +24,8 @@ class App extends Component<Props, State> {
       reloadUser: func.isRequired,
       setLocalUserData: func.isRequired,
     }).isRequired,
-  }
-
-  constructor(props: Props) {
-    super(props);
-    this.state = {
-      loggedIn: false,
-    };
+    token: string,
+    userData: object,
   }
 
   async componentDidMount() {
@@ -43,11 +36,15 @@ class App extends Component<Props, State> {
     this.props.actions.setInitialized();
   }
 
+  get loggedIn(): boolean {
+    return !!(this.props.token && this.props.userData);
+  }
+
   render() {
     return (
       <BrowserRouter>
         <div>
-          <TempHeader loggedIn={this.state.loggedIn} />
+          <TempHeader loggedIn={this.loggedIn} />
           <main className={styles.appContainer}>
             <Routes />
           </main>

@@ -35,7 +35,7 @@ const AuthenticatedRoute = (WrappedComponent, redirectTo, requireAuth = true) =>
 
   const mapStateToProps = (state) => ({
     initialized: state.app.initialized,
-    loggedIn: !!(state.auth.user),
+    loggedIn: !!(state.auth.token && state.auth.userData),
   });
 
   return connect(mapStateToProps)(AuthenticatedRoute);
