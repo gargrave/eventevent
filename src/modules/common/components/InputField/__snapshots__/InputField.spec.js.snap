@@ -34,7 +34,7 @@ ShallowWrapper {
           :
 </label>,
         <input
-          className={false}
+          className=""
           disabled={false}
           id="text"
           maxLength={255}
@@ -73,7 +73,7 @@ ShallowWrapper {
         "key": undefined,
         "nodeType": "host",
         "props": Object {
-          "className": false,
+          "className": "",
           "disabled": false,
           "id": "text",
           "maxLength": 255,
@@ -105,7 +105,7 @@ ShallowWrapper {
             :
 </label>,
           <input
-            className={false}
+            className=""
             disabled={false}
             id="text"
             maxLength={255}
@@ -144,7 +144,7 @@ ShallowWrapper {
           "key": undefined,
           "nodeType": "host",
           "props": Object {
-            "className": false,
+            "className": "",
             "disabled": false,
             "id": "text",
             "maxLength": 255,

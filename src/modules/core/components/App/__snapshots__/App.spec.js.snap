@@ -1,10 +1,10 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`AppComponent matches the snapshot 1`] = `
+exports[`App matches the snapshot 1`] = `
 ShallowWrapper {
   "length": 1,
   Symbol(enzyme.__root__): [Circular],
-  Symbol(enzyme.__unrendered__): <AppComponent
+  Symbol(enzyme.__unrendered__): <App
     actions={
         Object {
             "setInitialized": [Function],
@@ -24,8 +24,12 @@ ShallowWrapper {
     "nodeType": "class",
     "props": Object {
       "children": <div>
-        <TempHeader />
-        <main>
+        <TempHeader
+                loggedIn={false}
+        />
+        <main
+                className={undefined}
+        >
                 <Routes />
         </main>
 </div>,
@@ -37,8 +41,12 @@ ShallowWrapper {
       "nodeType": "host",
       "props": Object {
         "children": Array [
-          <TempHeader />,
-          <main>
+          <TempHeader
+            loggedIn={false}
+/>,
+          <main
+            className={undefined}
+>
             <Routes />
 </main>,
         ],
@@ -49,7 +57,9 @@ ShallowWrapper {
           "instance": null,
           "key": undefined,
           "nodeType": "function",
-          "props": Object {},
+          "props": Object {
+            "loggedIn": false,
+          },
           "ref": null,
           "rendered": null,
           "type": [Function],
@@ -60,6 +70,7 @@ ShallowWrapper {
           "nodeType": "host",
           "props": Object {
             "children": <Routes />,
+            "className": undefined,
           },
           "ref": null,
           "rendered": Object {
@@ -85,8 +96,12 @@ ShallowWrapper {
       "nodeType": "class",
       "props": Object {
         "children": <div>
-          <TempHeader />
-          <main>
+          <TempHeader
+                    loggedIn={false}
+          />
+          <main
+                    className={undefined}
+          >
                     <Routes />
           </main>
 </div>,
@@ -98,8 +113,12 @@ ShallowWrapper {
         "nodeType": "host",
         "props": Object {
           "children": Array [
-            <TempHeader />,
-            <main>
+            <TempHeader
+              loggedIn={false}
+/>,
+            <main
+              className={undefined}
+>
               <Routes />
 </main>,
           ],
@@ -110,7 +129,9 @@ ShallowWrapper {
             "instance": null,
             "key": undefined,
             "nodeType": "function",
-            "props": Object {},
+            "props": Object {
+              "loggedIn": false,
+            },
             "ref": null,
             "rendered": null,
             "type": [Function],
@@ -121,6 +142,7 @@ ShallowWrapper {
             "nodeType": "host",
             "props": Object {
               "children": <Routes />,
+              "className": undefined,
             },
             "ref": null,
             "rendered": Object {
