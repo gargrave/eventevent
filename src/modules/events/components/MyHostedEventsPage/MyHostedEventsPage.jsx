@@ -1,10 +1,13 @@
 // @flow
 import React, { Component } from 'react';
 import { array, bool, func, shape } from 'prop-types';
+import { format } from 'date-fns';
 
 import type { Event } from '../../flowtypes';
 
 import styles from './MyHostedEventsPage.css';
+
+const DATE_FORMAT = 'ddd, MMM DD, YYYY @ h:mm A Z';
 
 type Props = {
   actions: Object,
@@ -46,7 +49,10 @@ class MyHostedEventsPage extends Component<Props> {
           {
             this.props.events.map((event) => {
               return (
-                <li key={event.id}>{event.title}</li>
+                <ul key={event.id}>
+                  <li><strong>Title</strong> {event.title}</li>
+                  <li><strong>Date</strong> {format(event.date, DATE_FORMAT)}</li>
+                </ul>
               );
             })
           }
