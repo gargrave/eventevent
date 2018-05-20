@@ -1,6 +1,11 @@
 import axios from 'axios';
 
-const BASE_URL = 'http://localhost:3001/api/v1';
+import { isDev } from '../../../utils/env';
+
+const BASE_URL = isDev() 
+  ? 'http://localhost:3001/api/v1'
+  : 'put Prod URL here when we have one';
+  
 const DEFAULT_HEADERS = { Accept: 'application/json' };
 
 function buildReq(method, url, data = null, token = null) {
