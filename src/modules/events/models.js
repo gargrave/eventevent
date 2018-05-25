@@ -5,20 +5,24 @@ export const eventModel = {
   empty(): Event {
     return {
       title: '',
+      date: new Date(),
     };
   },
 
   emptyErrors(): EventErrors {
     return {
+      date: '',
       title: '',
     };
   },
 
   editable(event: Event): Event {
     return {
-      created: event.created,
+      created: event.created_at,
+      date: event.date,
       title: event.title,
       id: event.id,
+      updated: event.updated_at,
     };
   },
 
@@ -27,7 +31,7 @@ export const eventModel = {
       title: data.title.trim() || '',
     };
 
-    ['id', 'created'].forEach((val) => {
+    ['id', 'created_at'].forEach((val) => {
       if (data[val]) {
         payload[val] = data[val];
       }
@@ -38,16 +42,19 @@ export const eventModel = {
 
   fromAPI(event: Event): Event {
     const {
+      id,
+      created_at,
+      date,
       title,
-      created,
-      updated,
+      updated_at,
     } = event;
 
     return {
-      id: event.id,
+      id,
+      created_at,
+      date,
       title,
-      created,
-      updated,
+      updated_at,
     };
   },
 };

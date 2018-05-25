@@ -25,7 +25,7 @@ class AccountPage extends Component<Props> {
     history: object,
   };
 
-  onLogoutClick = async(e: SyntheticMouseEvent<HTMLDivElement>) => {
+  onLogoutClick = async(e: any) => {
     e.preventDefault();
     try {
       await this.props.actions.logout();
