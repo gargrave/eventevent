@@ -1,0 +1,20 @@
+.errorMsg {
+  color: var(--errorColor);
+}
+
+.invalid {
+  border-color: var(--errorColor) !important; /* using !important to override Shoelace's styles */
+}
+
+/* need to override some styles set by Shoelace */
+.datepickerWrapper button {
+  height: unset;
+}
+
+.datepickerWrapper input[readonly] {
+  background: white;
+}
+
+.datepickerWrapper ul {
+  padding-left: unset;
+}
