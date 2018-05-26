@@ -25,14 +25,14 @@ export const createEvent = (event: Event) =>
       dispatch(requestEnd());
       throw parseAPIError(res.error);
     } else {
-      dispatch(_createEvent(res.events));
+      dispatch(_createEvent(res.event));
       dispatch(requestEnd());
-      return res.events;
+      return res.event;
     }
   };
 
 export const createEventReducer =
   (state: any, action: ReduxAction) => ({
     ...state,
-    data: action.payload.event,
+    data: state.data.concat(action.payload.event),
   });

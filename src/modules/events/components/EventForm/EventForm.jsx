@@ -4,6 +4,7 @@ import { bool, func, shape, string } from 'prop-types';
 
 import type { Event, EventErrors } from '../../flowtypes';
 
+import Datepicker from '../../../common/components/Datepicker/Datepicker';
 import Form from '../../../common/components/Form/Form';
 import InputField from '../../../common/components/InputField/InputField';
 
@@ -11,6 +12,7 @@ type Props = {
   disabled?: boolean,
   errors: EventErrors,
   model: Event,
+  onDateChange: Function,
   onInputChange: Function,
   onSubmit: Function,
   submitDisabled: boolean,
@@ -21,6 +23,7 @@ const EventForm = ({
   disabled = false,
   errors,
   model,
+  onDateChange,
   onInputChange,
   onSubmit,
   submitDisabled,
@@ -42,6 +45,14 @@ const EventForm = ({
         name="title"
         onInputChange={onInputChange}
       />
+
+      <Datepicker 
+        boundValue={model.date}
+        error={errors.title}
+        label="Date of Event"
+        name="date"
+        onDateChange={onDateChange}
+      />
     </Form>
   </div>
 );
@@ -54,6 +65,7 @@ EventForm.propTypes = {
   model: shape({
     title: string.isRequired,
   }).isRequired,
+  onDateChange: func.isRequired,
   onInputChange: func.isRequired,
   onSubmit: func.isRequired,
   submitDisabled: bool,

@@ -54,6 +54,12 @@ class CreateEventPage extends Component<Props, State> {
     }
   }
 
+  onDateChange = (val: any) => {
+    const cleanDate: Date = new Date(val);
+    const model = { ...this.state.model, date: cleanDate };
+    this.setState({ model });
+  }
+
   onSubmit = (e: any) => {
     e.preventDefault();
     const model = this.state.model;
@@ -91,6 +97,7 @@ class CreateEventPage extends Component<Props, State> {
           disabled={formDisabled}
           errors={errors}
           model={model}
+          onDateChange={this.onDateChange}
           onInputChange={this.onInputChange}
           onSubmit={this.onSubmit}
           submitDisabled={submitDisabled}

@@ -1,11 +1,20 @@
 // @flow
 import type { Event, EventErrors } from './flowtypes';
 
+function defaultDate() {
+  const date = new Date();
+  date.setHours(12);
+  date.setMinutes(0);
+  date.setSeconds(0);
+  date.setMilliseconds(0);
+  return date;
+}
+
 export const eventModel = {
   empty(): Event {
     return {
       title: '',
-      date: new Date(),
+      date: defaultDate(),
     };
   },
 

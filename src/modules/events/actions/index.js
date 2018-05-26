@@ -16,7 +16,7 @@ const defaultState = () => ({
 export default reducerContainer(
   defaultState(),
   {
-    [types.CREATE]: createEventReducer,
+    [types.CREATE_EVENT]: createEventReducer,
     [types.FETCH_HOSTED_EVENTS_SUCCESS]: fetchHostedEventsReducer,
     [types.REQUEST_END]: requestEndReducer,
     [types.REQUEST_START]: requestStartReducer,
