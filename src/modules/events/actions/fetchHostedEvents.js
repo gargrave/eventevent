@@ -19,7 +19,7 @@ export const fetchHostedEvents = () =>
   async(dispatch: Function, getState: Function) => {
     const token = getState().auth.token;
     const events = getState().events.data;
-    if (events.length) {
+    if (events.length > 1) {
       return events;
     }
     
