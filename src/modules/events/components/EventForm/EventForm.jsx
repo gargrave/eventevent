@@ -29,32 +29,29 @@ const EventForm = ({
   submitDisabled,
   topLevelError,
 }: Props) => (
-  <div>
-    <h2>EventForm</h2>
-    <Form 
+  <Form 
+    disabled={disabled}
+    onSubmit={onSubmit}
+    submitDisabled={submitDisabled}
+    topLevelError={topLevelError}
+  >
+    <InputField
+      boundValue={model.title}
       disabled={disabled}
-      onSubmit={onSubmit}
-      submitDisabled={submitDisabled}
-      topLevelError={topLevelError}
-    >
-      <InputField
-        boundValue={model.title}
-        disabled={disabled}
-        error={errors.title}
-        label="Title"
-        name="title"
-        onInputChange={onInputChange}
-      />
+      error={errors.title}
+      label="Title"
+      name="title"
+      onInputChange={onInputChange}
+    />
 
-      <Datepicker 
-        boundValue={model.date}
-        error={errors.date}
-        label="Date of Event"
-        name="date"
-        onDateChange={onDateChange}
-      />
-    </Form>
-  </div>
+    <Datepicker 
+      boundValue={model.date}
+      error={errors.date}
+      label="Date of Event"
+      name="date"
+      onDateChange={onDateChange}
+    />
+  </Form>
 );
 
 EventForm.propTypes = {
