@@ -4,6 +4,7 @@ import types from './types';
 import authTypes from '../../auth/actions/types';
 import { fetchHostedEvents, fetchHostedEventsReducer } from './fetchHostedEvents';
 import { clearEventsReducer } from './clearEvents';
+import { createEvent, createEventReducer } from './createEvent';
 import { requestEndReducer } from './requestEnd';
 import { requestStartReducer } from './requestStart';
 
@@ -15,6 +16,7 @@ const defaultState = () => ({
 export default reducerContainer(
   defaultState(),
   {
+    [types.CREATE]: createEventReducer,
     [types.FETCH_HOSTED_EVENTS_SUCCESS]: fetchHostedEventsReducer,
     [types.REQUEST_END]: requestEndReducer,
     [types.REQUEST_START]: requestStartReducer,
@@ -22,6 +24,7 @@ export default reducerContainer(
   }
 );
 
-export const actions = { 
+export const actions = {
+  createEvent,
   fetchHostedEvents,
 };

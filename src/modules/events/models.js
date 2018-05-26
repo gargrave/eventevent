@@ -28,6 +28,7 @@ export const eventModel = {
 
   toAPI(data: Event): Event {
     let payload: any = {
+      date: data.date,
       title: data.title.trim() || '',
     };
 

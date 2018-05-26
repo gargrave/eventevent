@@ -29,6 +29,7 @@ const EventForm = ({
   <div>
     <h2>EventForm</h2>
     <Form 
+      disabled={disabled}
       onSubmit={onSubmit}
       submitDisabled={submitDisabled}
       topLevelError={topLevelError}

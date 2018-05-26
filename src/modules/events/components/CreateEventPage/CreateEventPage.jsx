@@ -1,8 +1,10 @@
 // @flow
 import React, { Component } from 'react';
+import { any, func, shape } from 'prop-types';
 
 import type { Event, EventErrors } from '../../flowtypes';
 
+import { localUrls } from '../../../../globals/urls';
 import { eventModel } from '../../models';
 import { eventHasAllFields, validateEvent } from '../../validators';
 
@@ -10,8 +12,9 @@ import EventForm from '../EventForm/EventForm';
 
 import styles from './CreateEventPage.css';
 
-// TODO: need a 'createEvent' action
 type Props = {
+  actions: Object,
+  history: any,
 };
 
 type State = {
@@ -24,6 +27,10 @@ type State = {
 
 class CreateEventPage extends Component<Props, State> {
   static propTypes = {
+    actions: shape({
+      createEvent: func.isRequired,
+    }).isRequired,
+    history: any,
   };
 
   constructor(props: Props) {
@@ -63,10 +70,9 @@ class CreateEventPage extends Component<Props, State> {
       topLevelError: '',
     }, async() => {
       try {
-        const eventData = eventModel.toAPI(model);
-        console.log('submit dat event!');
-        // await this.props.actions.login(eventData);
-        // this.props.history.push(localUrls.events.myHosted);
+        const payload = eventModel.toAPI(model);
+        await this.props.actions.createEvent(payload);
+        this.props.history.push(localUrls.events.myHosted);
       } catch (err) {
         this.setState({
           formDisabled: false,
