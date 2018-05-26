@@ -48,7 +48,7 @@ const EventForm = ({
 
       <Datepicker 
         boundValue={model.date}
-        error={errors.title}
+        error={errors.date}
         label="Date of Event"
         name="date"
         onDateChange={onDateChange}
